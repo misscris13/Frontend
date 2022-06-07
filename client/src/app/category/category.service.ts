@@ -13,4 +13,12 @@ export class CategoryService {
   getCategories(): Observable<Category[]> {
     return of(CATEGORY_DATA);
   }
+
+  saveCategory(category: Category): Observable<Category> {
+    return of(null);
+  }
+
+  deleteCategory(idCategory: number): Observable<any> {
+    return of(null);
+  }
 }
