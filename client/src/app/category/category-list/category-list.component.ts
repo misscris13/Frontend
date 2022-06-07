@@ -45,4 +45,8 @@ export class CategoryListComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
+  deleteCategory(category: Category) {
+    // a
+  }
 }

@@ -20,7 +20,7 @@ export class CategoryEditComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.data.category != null) {
-            this.category = this.data.category;
+            this.category = Object.assign({}, this.data.category);
         }
         else {
             this.category = new Category();

@@ -17,7 +17,8 @@
             <mat-cell *matCellDef="let element">
                 <button mat-icon-button>
                     <mat-icon (click)="editCategory(element)">edit</mat-icon></button>
-                <button mat-icon-button><mat-icon>clear</mat-icon></button>
+                <button mat-icon-button>
+                    <mat-icon (click)="deleteCategory(element)">clear</mat-icon></button>
             </mat-cell>
         </ng-container>
 
