@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { CategoryService } from '../category.service';
+import { Category } from '../model/Category';
 
 @Component({
   selector: 'app-category-edit',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryEditComponent implements OnInit {
 
-  constructor() { }
+    category : Category;
 
-  ngOnInit(): void {
-  }
+    constructor(
+        public dialogRef: MatDialogRef<CategoryEditComponent>,
+        private categoryService: CategoryService
+    ) { }
 
+    ngOnInit(): void {
+        this.category = new Category();
+    }
+
+    onSave() {
+        this.categoryService.saveCategory(this.category).subscribe(result => {
+            this.dialogRef.close();
+        });
+    }
+
+    onClose() {
+        this.dialogRef.close();
+    }
 }

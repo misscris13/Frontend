@@ -6,6 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryEditComponent } from './category-edit/category-edit.component';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [CategoryListComponent, CategoryEditComponent],
@@ -15,6 +18,10 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
     MatIconModule, 
     MatButtonModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
