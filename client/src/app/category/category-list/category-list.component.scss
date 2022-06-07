@@ -24,6 +24,15 @@
         flex: 0 0 10%;
         justify-content: center;
       }
+
+      .mat-cell {
+        button {
+            color: goldenrod;
+        }
+        button:hover {
+          color: darkgoldenrod;
+        }
+      }
     }
   
     .buttons {
@@ -31,6 +40,9 @@
       .mat-flat-button {
           background-color: goldenrod;
           color: white;
+      }
+      .mat-flat-button:hover {
+        background-color: darkgoldenrod;
       }
     }
   }

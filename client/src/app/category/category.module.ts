@@ -5,17 +5,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CategoryListComponent } from './category-list/category-list.component';
 
-
-
 @NgModule({
-  declarations: [
-    CategoryListComponent
-  ],
+  declarations: [CategoryListComponent],
   imports: [
     CommonModule,
     MatTableModule,
-    MatIconModule,
+    MatIconModule, 
     MatButtonModule
-  ]
+  ],
 })
 export class CategoryModule { }
