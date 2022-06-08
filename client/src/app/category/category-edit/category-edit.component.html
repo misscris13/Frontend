@@ -1,3 +1,5 @@
+<!-- HTML for the popup dialog when editing or creating a CATEGORY -->
+
 <div class="container">
     <h1 *ngIf="category.id == null">Crear categoría</h1>
     <h1 *ngIf="category.id != null">Modificar categoría</h1>
@@ -17,6 +19,6 @@
 
     <div class="buttons">
         <button mat-stroked-button (click)="onClose()">Cerrar</button>
-        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+        <button mat-flat-button (click)="onSave()">Guardar</button>
     </div>
 </div>
