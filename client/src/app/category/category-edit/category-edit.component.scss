@@ -6,20 +6,20 @@
     form {
         display: flex;
         flex-direction: column;
-        margin-bottom:20px;
+        margin-bottom: 20px;
     }
 
     .buttons {
-      text-align: right;
+        text-align: right;
 
-      button {
-        margin-left: 10px;
-      }
-      .mat-flat-button {
-          background-color: goldenrod;
-      }
-      .mat-flat-button:hover {
-          background-color: darkgoldenrod;
-      }
+        button {
+            margin-left: 10px;
+        }
+        .mat-flat-button {
+            background-color: goldenrod;
+        }
+        .mat-flat-button:hover {
+            background-color: darkgoldenrod;
+        }
     }
 }
