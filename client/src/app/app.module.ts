@@ -1,3 +1,4 @@
+// IMPORTS
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { CategoryModule } from './category/category.module';
 
+// MODULE
 @NgModule({
   declarations: [
     AppComponent
@@ -21,4 +23,5 @@ import { CategoryModule } from './category/category.module';
   providers: [],
   bootstrap: [AppComponent]
 })
+// CLASS DEFINITION
 export class AppModule { }

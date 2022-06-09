@@ -1,3 +1,4 @@
+// IMPORTS
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Category } from '../model/Category';
@@ -5,11 +6,13 @@ import { CategoryService } from '../category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
 
+// COMPONENT
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']
 })
+// CLASS DEFINITION
 export class CategoryListComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Category>();

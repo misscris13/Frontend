@@ -1,23 +1,25 @@
+<!-- HTML for the list of categories -->
+
 <div class="container">
     <h1>Listado de Categorías</h1>
 
-    <mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="id">
+    <mat-table [dataSource]="dataSource">   <!-- Define data source -->
+        <ng-container matColumnDef="id">    <!-- ID column -->
             <mat-header-cell *matHeaderCellDef> Identificador </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="name">  <!-- Name column -->
             <mat-header-cell *matHeaderCellDef> Nombre categoría  </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="action">
+        <ng-container matColumnDef="action">    <!-- Buttons column -->
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button>
+                <button mat-icon-button>    <!-- Edit button -->
                     <mat-icon (click)="editCategory(element)">edit</mat-icon></button>
-                <button mat-icon-button>
+                <button mat-icon-button>    <!-- Delete button -->
                     <mat-icon (click)="deleteCategory(element)">clear</mat-icon></button>
             </mat-cell>
         </ng-container>
@@ -27,6 +29,6 @@
     </mat-table>
 
     <div class="buttons">
-        <button mat-flat-button (click)="createCategory()">Nueva categoría</button>
+        <button mat-flat-button (click)="createCategory()">Nueva categoría</button> <!-- Create button -->
     </div>   
 </div>

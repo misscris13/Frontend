@@ -1,5 +1,7 @@
+// IMPORTS
 import { Category } from "./Category";
 
+// MOCK DATA
 export const CATEGORY_DATA: Category[] = [
     { id: 1, name: 'Dados' },
     { id: 2, name: 'Fichas' },
