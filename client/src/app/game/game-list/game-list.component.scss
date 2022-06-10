@@ -30,20 +30,20 @@
 
     .buttons {
         text-align: right;
-    .mat-flat-button {
-        background-color: goldenrod;
-        color: white;
-    }
-    .mat-flat-button:hover {
-        background-color: darkgoldenrod;
-    }
-    .mat-stroked-button {
-        background-color: goldenrod;
-        color: white;
-    }
-    .mat-stroked-button:hover {
-        background-color: darkgoldenrod;
-    }
+        .mat-flat-button {
+            background-color: goldenrod;
+            color: white;
+        }
+        .mat-flat-button:hover {
+            background-color: darkgoldenrod;
+        }
+        .mat-stroked-button {
+            background-color: goldenrod;
+            color: white;
+        }
+        .mat-stroked-button:hover {
+            background-color: darkgoldenrod;
+        }
     }
 }
 
