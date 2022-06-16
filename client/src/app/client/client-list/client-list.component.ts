@@ -7,7 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ClientEditComponent } from '../client-edit/client-edit.component';
 import { Category } from 'src/app/category/model/Category';
 import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
-// import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 
 @Component({
     selector: 'app-client-list',
