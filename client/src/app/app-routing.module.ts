@@ -5,6 +5,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { AuthorListComponent } from './author/author-list/author-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { ClientListComponent } from './client/client-list/client-list.component';
+import { LeaseListComponent } from './lease/lease-list/lease-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/games', pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'authors', component: AuthorListComponent },
   { path: 'games', component: GameListComponent },
   { path: 'clients', component: ClientListComponent },
+  { path: 'leases', component: LeaseListComponent },
 ];
 
 // MODULE

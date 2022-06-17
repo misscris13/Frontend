@@ -1,3 +1,40 @@
 <!-- HTML for editing a lease -->
 
-<p>lease-edit works!</p>
+<div class="container">
+    <h1 *ngIf="lease.id == null"> Crear préstamo </h1>
+    <h1 *ngIf="lease.id != null"> Modificar préstamo </h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label> Identificador </mat-label>
+            <input type="number" matInput placeholder="Identificador" [(ngModel)]="lease.id" name="id" disabled>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label> Cliente </mat-label>
+            <mat-select disableRipple [(ngModel)]="lease.clientName" name="clientName" required>
+                <mat-option *ngFor="let client of clients" [value]="client"> {{client.name}} </mat-option>
+            </mat-select>
+            <mat-error> El nombre del cliente no puede estar vacío </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label> Juego </mat-label>
+            <mat-select disableRipple [(ngModel)]="lease.gameName" name="gameName" required>
+                <mat-option *ngFor="let game of games" [value]="game"> {{game.name}} </mat-option>
+            </mat-select>
+            <mat-error> El nombre del juego no puede estar vacío </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label> Fechas de préstamo </mat-label>
+            <input type="date" matInput [(ngModel)]="lease.startDate" name="startDate">
+            <input type="date" matInput [(ngModel)]="lease.endDate" name="endDate">
+        </mat-form-field>
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()"> Cerrar </button>
+        <button mat-flat-button (click)="onSave()"> Guardar </button>
+    </div>
+</div>
