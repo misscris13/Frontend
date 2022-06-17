@@ -10,6 +10,7 @@ import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
 import { GameModule } from './game/game.module';
 import { ClientModule } from './client/client.module';
+import { LeaseModule } from './lease/lease.module';
 
 // MODULE
 @NgModule({
@@ -24,6 +25,7 @@ import { ClientModule } from './client/client.module';
     AuthorModule,
     GameModule,
     ClientModule,
+    LeaseModule,
     BrowserAnimationsModule,
   ],
   providers: [],

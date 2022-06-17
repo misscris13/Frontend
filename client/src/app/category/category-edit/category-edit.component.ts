@@ -13,7 +13,8 @@ import { Category } from '../model/Category';
 // CLASS DEFINITION
 export class CategoryEditComponent implements OnInit {
 
-    category : Category;
+    // Variables
+    category : Category;    // category object
 
     constructor(
         public dialogRef: MatDialogRef<CategoryEditComponent>,  // Dialog

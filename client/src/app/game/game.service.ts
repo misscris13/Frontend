@@ -13,10 +13,12 @@ export class GameService {
         private http: HttpClient
     ) { }
 
+    // GET Petition
     getGames(title?: String, categoryId?: number): Observable<Game[]> {
         return this.http.get<Game[]>(this.composeFindUrl(title, categoryId));
     }
 
+    // PUT Petition
     saveGame(game: Game): Observable<void> {
         let url = "http://localhost:8080/game";
 
@@ -27,6 +29,7 @@ export class GameService {
         return this.http.put<void>(url, game);
     }
 
+    // Filters
     private composeFindUrl(title?: String, categoryId?: number) : string {
         let params = "";
 

@@ -12,7 +12,8 @@ import { Author } from '../model/Author';
 })
 // CLASS DEFINITION
 export class AuthorEditComponent implements OnInit {
-    author : Author;
+    // Variables
+    author : Author;    // author object
 
     constructor(
         public dialogRef: MatDialogRef<AuthorEditComponent>,
@@ -20,13 +21,13 @@ export class AuthorEditComponent implements OnInit {
         private authorService: AuthorService,
     ) { }
 
-    // On initialization, create or edit an author
+    // On initialization, decide if creating or editing an author
     ngOnInit(): void {
-        if (this.data.author != null) {
-            this.author = Object.assign({}, this.data.author);
+        if (this.data.author != null) { // author exists
+            this.author = Object.assign({}, this.data.author);  // copy existing data
         }
-        else {
-            this.author = new Author();
+        else {  // author doesn't exist
+            this.author = new Author(); // create author
         }
     }
 

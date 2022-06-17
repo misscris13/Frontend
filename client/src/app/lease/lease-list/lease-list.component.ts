@@ -1,3 +1,4 @@
+// IMPORTS
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './lease-list.component.html',
   styleUrls: ['./lease-list.component.scss']
 })
+// CLASS DEFINITION
 export class LeaseListComponent implements OnInit {
 
   constructor() { }

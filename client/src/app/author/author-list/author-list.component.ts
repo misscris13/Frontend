@@ -18,12 +18,12 @@ import { Author } from 'src/app/author/model/Author';
 // CLASS DEFINITION
 export class AuthorListComponent implements OnInit {
     // Variables
-    pageNumber: number = 0;
-    pageSize: number = 5;
-    totalElements: number = 0;
+    pageNumber: number = 0; // page number
+    pageSize: number = 5;   // items per page
+    totalElements: number = 0;  // total elements
 
-    dataSource = new MatTableDataSource<Author>();
-    displayedColumns: string[] = ['id', 'name', 'nationality', 'action'];
+    dataSource = new MatTableDataSource<Author>();  // author table
+    displayedColumns: string[] = ['id', 'name', 'nationality', 'action'];   // columns
 
     constructor(
         private authorService: AuthorService,
@@ -61,6 +61,7 @@ export class AuthorListComponent implements OnInit {
         });
     }
 
+    // Creates author
     createAuthor() {
         const dialogRef = this.dialog.open(AuthorEditComponent, {
             data: {} 
@@ -71,6 +72,7 @@ export class AuthorListComponent implements OnInit {
         });
     }
 
+    // Edits author
     editAuthor(author: Author) {
         const dialogRef = this.dialog.open(AuthorEditComponent, {
             data: { author: author } 
@@ -81,10 +83,11 @@ export class AuthorListComponent implements OnInit {
         });
     }
 
+    // Delets author
     deleteAuthor(author: Author) {
         const dialogRef = this.dialog.open(DialogConfirmationComponent, {
             data: { title: "Eliminar autor", 
-                description: "Atención, si borra el autor se perderán sus datos. <br> ¿Desea eliminar el autor?" } 
+                description: "Atención, si borra el autor se perderán sus datos. <br> ¿Desea eliminar el autor?" }  // confirmation message
         });
     
         dialogRef.afterClosed().subscribe(result => {

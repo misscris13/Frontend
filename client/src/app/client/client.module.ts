@@ -1,3 +1,4 @@
+// IMPORTS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientListComponent } from './client-list/client-list.component';
@@ -11,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientEditComponent } from './client-edit/client-edit.component';
 import { HttpClientModule } from '@angular/common/http';
 
+// DEPENDENCIES
 @NgModule({
     declarations: [
         ClientListComponent,

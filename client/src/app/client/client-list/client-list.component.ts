@@ -13,22 +13,25 @@ import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/di
     templateUrl: './client-list.component.html',
     styleUrls: ['./client-list.component.scss']
 })
+// CLASS DEFINITION
 export class ClientListComponent implements OnInit {
 
-    dataSource = new MatTableDataSource<Client>();
-    displayedColumns: string[] = ['id', 'name', 'action'];
+    dataSource = new MatTableDataSource<Client>();  // client table
+    displayedColumns: string[] = ['id', 'name', 'action'];  // columns
 
     constructor(
         private clientService: ClientService,
         public dialog: MatDialog,
     ) { }
 
+    // On loading the list, get clients
     ngOnInit(): void {
         this.clientService.getClients().subscribe(
             clients => this.dataSource.data = clients
         );
     }
 
+    // Creates a client
     createClient() {
         const dialogRef = this.dialog.open(ClientEditComponent, {
             data: {}
@@ -39,6 +42,7 @@ export class ClientListComponent implements OnInit {
         });
     }
 
+    // Edits a client
     editClient(client: Client) {
         const dialogRef = this.dialog.open(ClientEditComponent, {
             data: { client: client }
@@ -49,8 +53,10 @@ export class ClientListComponent implements OnInit {
         });
     }
 
+    // Deletes a client
     deleteClient(client: Client) {
         const dialogRef = this.dialog.open(DialogConfirmationComponent, {
+            // Confirmation message
             data: { title: "Eliminar cliente", description: "Atención, si borra el cliente se perderán sus datos. <br> ¿Desea eliminar el cliente?" }
         });
 

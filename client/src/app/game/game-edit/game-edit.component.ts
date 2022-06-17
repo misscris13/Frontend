@@ -1,3 +1,4 @@
+// IMPORTS
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthorService } from 'src/app/author/author.service';
@@ -12,11 +13,12 @@ import { Game } from '../model/Game';
     templateUrl: './game-edit.component.html',
     styleUrls: ['./game-edit.component.scss']
 })
+// CLASS DEFINITION
 export class GameEditComponent implements OnInit {
 
-    game: Game;
-    authors: Author[];
-    categories: Category[];
+    game: Game; // game object
+    authors: Author[];  // list of authors
+    categories: Category[]; // list of categories
 
     constructor(
         public dialogRef: MatDialogRef<GameEditComponent>,
@@ -26,6 +28,7 @@ export class GameEditComponent implements OnInit {
         private authorService: AuthorService,
     ) { }
 
+    // On loading the dialog, decide if creating or editing
     ngOnInit(): void {
         if (this.data.game != null) {
             this.game = Object.assign({}, this.data.game);
@@ -34,6 +37,7 @@ export class GameEditComponent implements OnInit {
             this.game = new Game();
         }
 
+        // get all categories
         this.categoryService.getCategories().subscribe(
             categories => {
                 this.categories = categories;
@@ -47,6 +51,7 @@ export class GameEditComponent implements OnInit {
             }
         );
 
+        // get all authors
         this.authorService.getAllAuthors().subscribe(
             authors => {
                 this.authors = authors;
@@ -61,12 +66,14 @@ export class GameEditComponent implements OnInit {
         );
     }
 
+    // Save the game
     onSave() {
         this.gameService.saveGame(this.game).subscribe(result => {
             this.dialogRef.close();
         });
     }
 
+    // Close the dialog
     onClose() {
         this.dialogRef.close();
     }

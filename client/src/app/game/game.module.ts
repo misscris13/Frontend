@@ -1,3 +1,4 @@
+// IMPORTS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameListComponent } from './game-list/game-list.component';
@@ -15,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 
+// DEPENDENCIES
 @NgModule({
     declarations: [
         GameListComponent,

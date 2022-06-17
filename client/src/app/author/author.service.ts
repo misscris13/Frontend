@@ -18,23 +18,27 @@ export class AuthorService {
         private http: HttpClient
     ) { }
 
+    // GET Petition
     getAuthors(pageable: Pageable): Observable<AuthorPage> {
         return this.http.post<AuthorPage>('http://localhost:8080/author', {pageable: pageable});
     }
 
+    // PUT Petition
     saveAuthor(author: Author): Observable<void> {
         let url = 'http://localhost:8080/author';
         
-        if (author.id != null)
+        if (author.id != null)  // check if editing or creating
             url += '/' + author.id;
         
         return this.http.put<void>(url, author);
     }
 
+    // DELETE Petition
     deleteAuthor(idAuthor: number): Observable<void> {
         return this.http.delete<void>('http://localhols:8080/author/' + idAuthor);
     }
 
+    // GET Petition but without pages
     getAllAuthors(): Observable<Author[]> {
         return this.http.get<Author[]>('http://localhost:8080/author');
     }

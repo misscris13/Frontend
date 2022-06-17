@@ -16,20 +16,23 @@ import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/di
 // CLASS DEFINITION
 export class CategoryListComponent implements OnInit {
 
-    dataSource = new MatTableDataSource<Category>();
-    displayedColumns: string[] = ['id', 'name', 'action'];
+    // Variables
+    dataSource = new MatTableDataSource<Category>();    // category table, only use if mat-table is in HTML
+    displayedColumns: string[] = ['id', 'name', 'action'];  // columns
 
     constructor(
         private categoryService: CategoryService,
         public dialog: MatDialog,
     ) { }
 
+    // Loading this page, get categories
     ngOnInit(): void {
         this.categoryService.getCategories().subscribe(
             categories => this.dataSource.data = categories
         );
     }
 
+    // Creates a category
     createCategory() {
         const dialogRef = this.dialog.open(CategoryEditComponent, {
             data: {}
@@ -40,6 +43,7 @@ export class CategoryListComponent implements OnInit {
         });
     }
 
+    // Edits a category
     editCategory(category: Category) {
         const dialogRef = this.dialog.open(CategoryEditComponent, {
             data: { category: category }
@@ -50,8 +54,10 @@ export class CategoryListComponent implements OnInit {
         });
     }
 
+    // Deletes a category
     deleteCategory(category: Category) {
         const dialogRef = this.dialog.open(DialogConfirmationComponent, {
+            // confirmation message
             data: { title: "Eliminar categoría", description: "Atención, si borra la categoría se perderán sus datos. <br> ¿Desea eliminar la categoría?" }
         });
 

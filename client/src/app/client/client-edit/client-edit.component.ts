@@ -1,3 +1,4 @@
+// IMPORTS
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ClientService } from '../client.service';
@@ -8,12 +9,14 @@ import { Client } from '../model/Client';
     templateUrl: './client-edit.component.html',
     styleUrls: ['./client-edit.component.scss']
 })
+// CLASS DEFINITION
 export class ClientEditComponent implements OnInit {
 
-    client : Client;
-    dupe : Boolean;
-    names : String[] = [];
-    errorMessage : String;
+    // Variables
+    client : Client;    // client object
+    dupe : Boolean;     // if the name is duplicated or not
+    names : String[] = [];  // array of all client names
+    errorMessage : String;  // message to display when client name is in use
 
     constructor(
         public dialogRef: MatDialogRef<ClientEditComponent>,
@@ -21,6 +24,7 @@ export class ClientEditComponent implements OnInit {
         private clientService: ClientService,
     ) { }
 
+    // On loading this window, decide if editing or creating a client and fill names[]
     ngOnInit(): void {
         this.client = new Client();
         if (this.data.client != null) {
@@ -34,11 +38,12 @@ export class ClientEditComponent implements OnInit {
             clients => {clients.forEach(c => this.names.push(c.name))}
         );
 
-        this.dupe = false;
+        this.dupe = false;  // starts out as false
     
         this.errorMessage = "El nombre no puede coincidir con otro ya existente";
     }
 
+    // Check if dupe, if not, save the client
     onSave() {
         this.dupe = this.names.indexOf(this.client.name) > -1;
 
@@ -49,6 +54,7 @@ export class ClientEditComponent implements OnInit {
         }
     }
 
+    // Close the dialog
     onClose() {
         this.dialogRef.close();
     }
