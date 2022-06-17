@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LeaseEditComponent } from './lease-edit/lease-edit.component';
@@ -23,6 +25,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatTableModule,
         MatIconModule,
         MatButtonModule,
+        MatSelectModule,
+        MatOptionModule,
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
