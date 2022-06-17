@@ -18,8 +18,12 @@ export class LeaseEditComponent implements OnInit {
 
     // Variables
     lease : Lease;
+    leases: Lease[];
     games: Game[];
     clients: Client[];
+
+    error: Boolean;
+    errorMessage: String;
 
     constructor(
         public dialogRef: MatDialogRef<LeaseEditComponent>,
@@ -48,7 +52,7 @@ export class LeaseEditComponent implements OnInit {
             this.clients = clients;
         });
 
-
+        this.error = false;
     }
 
     // Saves the lease
@@ -56,6 +60,9 @@ export class LeaseEditComponent implements OnInit {
         this.leaseService.saveLease(this.lease).subscribe( result => {
             this.dialogRef.close();
         });
+
+        // Check for client having another lease, same date
+
     }
 
     // Closes the dialog

@@ -30,13 +30,14 @@
             <mat-label> Fechas de préstamo </mat-label>
             <table>
                 <tr>
-                    <td style="overflow:hidden">
+                    <td>
                         <input type="date" matInput [(ngModel)]="lease.startDate" name="startDate">
                         <input type="date" matInput [(ngModel)]="lease.endDate" name="endDate">
                     </td>
                 </tr>
             </table>
         </mat-form-field>
+        <span *ngIf="error" class="error"> {{errorMessage}} </span>
     </form>
 
     <div class="buttons">
