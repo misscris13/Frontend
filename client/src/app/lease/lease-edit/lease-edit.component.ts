@@ -19,9 +19,14 @@ export class LeaseEditComponent implements OnInit {
     // Variables
     lease : Lease;
     leases: Lease[];
+    lentGames: Game[];
+    lentClients: Client[];
     games: Game[];
     clients: Client[];
 
+    tooManyLeases: Boolean;
+    tooManyDays: Boolean;
+    alreadyLent: Boolean;
     error: Boolean;
     errorMessage: String;
 
@@ -52,17 +57,36 @@ export class LeaseEditComponent implements OnInit {
             this.clients = clients;
         });
 
+        // Get all leases
+        this.leaseService.getAll().subscribe( leases => {
+            this.leases = leases;
+        })
+
+        this.leases.forEach(l => this.lentGames.push(l.game));
+        this.leases.forEach(l => this.lentClients.push(l.client));
+
         this.error = false;
+        this.errorMessage = "";
     }
 
     // Saves the lease
     onSave() {
+        this.tooManyDays = (this.lease.endDate.valueOf() - this.lease.startDate.valueOf()) > 14;
+        if (this.tooManyDays)
+            this.errorMessage += "\n No se puede prestar por más de 14 días.";
+
+        this.tooManyLeases = this.lentClients.indexOf(this.lease.client) > -1;
+        if (this.tooManyLeases)
+            this.errorMessage += "\n Este cliente ya tiene un juego prestado.";
+
+        //this.alreadyLent = this.lentGames.indexOf(this.lease.game) > -1;
+        this.alreadyLent = false;
+
+        this.error = this.tooManyDays || this.tooManyLeases || this.alreadyLent;
+
         this.leaseService.saveLease(this.lease).subscribe( result => {
             this.dialogRef.close();
         });
-
-        // Check for client having another lease, same date
-
     }
 
     // Closes the dialog

@@ -23,6 +23,10 @@ export class LeaseService {
         return this.http.post<LeasePage>('http://localhost:8080/lease', {pageable:pageable});
     }
 
+    getAll(): Observable<Lease[]> {
+        return this.http.get<Lease[]>('http://localhost:8080/lease');
+    }
+
     // Saves a lease
     saveLease(lease: Lease): Observable<void> {
         let url = "http://localhost:8080/lease";
@@ -35,6 +39,6 @@ export class LeaseService {
 
     // Deletes a lease
     deleteLease(idLease: number): Observable<void> {
-        return of(null);
+        return this.http.delete<void>("http://localhost:8080/lease/" + idLease);
     }
 }
