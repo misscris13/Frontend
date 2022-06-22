@@ -10,11 +10,11 @@
         </ng-container>
         <ng-container matColumnDef="gameName">
             <mat-header-cell *matHeaderCellDef> Juego </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.gameName}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.game.title}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="clientName">
             <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.clientName}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.client.name}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="startDate">
             <mat-header-cell *matHeaderCellDef> Fecha de préstamo </mat-header-cell>

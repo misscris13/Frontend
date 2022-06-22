@@ -75,6 +75,10 @@ export class LeaseListComponent implements OnInit {
         const dialogRef = this.dialog.open(LeaseEditComponent, {
             data: { lease: lease }
         });
+        
+        dialogRef.afterClosed().subscribe( result => {
+            this.ngOnInit();
+        });
     }
 
     // Deletes a lease
