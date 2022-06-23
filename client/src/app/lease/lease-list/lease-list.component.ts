@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Client } from 'src/app/client/model/Client';
 import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 import { Pageable } from 'src/app/core/model/page/Pageable';
+import { Game } from 'src/app/game/model/Game';
 import { LeaseEditComponent } from '../lease-edit/lease-edit.component';
 import { LeaseService } from '../lease.service';
 import { Lease } from '../model/Lease';
@@ -22,6 +24,12 @@ export class LeaseListComponent implements OnInit {
     pageSize: number = 5;
     totalElements: number = 0;
 
+    clients: Client[];
+    games: Game[];
+    filterGame: Game;
+    filterClient: Client;
+    filterDate: Date;
+
     dataSource = new MatTableDataSource<Lease>();
     displayedColumns: string[] = ['id', 'gameName', 'clientName', 'startDate', 'endDate', 'action'];
 
@@ -33,6 +41,25 @@ export class LeaseListComponent implements OnInit {
     // On load/init, load the corresponding page
     ngOnInit(): void {
         this.loadPage();
+    }
+
+    // On cleaning the filter, re-search
+    onCleanFilter(): void {
+        this.filterGame = null;
+        this.filterClient = null;
+        this.filterDate = null;
+
+        this.onSearch();
+    }
+
+    // On search click, filter
+    onSearch(): void {
+        let game = this.filterGame;
+        let clientId = this.filterClient != null ? this.filterClient.id : null;
+
+        // this.leaseService.getGames(title, categoryId).subscribe(
+        //     games => this.games = games
+        // );
     }
 
     // Loads the corresponding page

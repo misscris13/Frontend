@@ -3,6 +3,40 @@
 <div class="container">
     <h1>Listado de Préstamos</h1>
 
+    <!-- Filter form -->
+    <div class="filters">
+        <form>
+            <!-- Title -->
+            <mat-form-field>
+                <mat-label>Título</mat-label>
+                <!-- Dropdown -->
+                <mat-select disableRipple [(ngModel)]="filterGame" name="game">
+                    <mat-option *ngFor="let game of games" [value]="game"> {{game.title}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Client -->
+            <mat-form-field>
+                <mat-label>Cliente</mat-label>
+                <!-- Dropdown -->
+                <mat-select disableRipple [(ngModel)]="filterClient" name="client">
+                    <mat-option *ngFor="let client of clients" [value]="client"> {{client.name}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Date -->
+            <mat-form-field>
+                <mat-label>Fecha</mat-label>
+                <input type="date" matInput placeholder="Fecha" [(ngModel)]="filterDate" name="date">
+            </mat-form-field>
+        </form>
+
+        <div class="buttons">
+            <button mat-stroked-button (click)="onCleanFilter()"> Limpiar </button>
+            <button mat-stroked-button (click)="onSearch()"> Filtrar </button>
+        </div>
+    </div>
+
     <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef> Identificador </mat-header-cell>
