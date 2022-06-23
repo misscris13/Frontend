@@ -26,16 +26,12 @@
             <mat-error> El nombre del juego no puede estar vacío </mat-error>
         </mat-form-field>
 
+        <mat-label> Fechas de préstamo </mat-label>
         <mat-form-field>
-            <mat-label> Fechas de préstamo </mat-label>
-            <table>
-                <tr>
-                    <td>
-                        <input type="date" matInput [(ngModel)]="lease.startDate" name="startDate">
-                        <input type="date" matInput [(ngModel)]="lease.endDate" name="endDate">
-                    </td>
-                </tr>
-            </table>
+            <input type="date" matInput [(ngModel)]="lease.startDate" name="startDate">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="date" matInput [(ngModel)]="lease.endDate" name="endDate">
         </mat-form-field>
         <span *ngIf="error" class="error"> {{errorMessage}} </span>
     </form>
