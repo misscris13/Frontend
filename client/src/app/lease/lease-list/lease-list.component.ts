@@ -68,9 +68,6 @@ export class LeaseListComponent implements OnInit {
     // On search click, filter
     onSearch(): void {
         this.loadPage();
-        // this.leaseService.getFilteredLeases(game, clientId, date).subscribe(
-        //     leases => this.leases = leases
-        // );
     }
 
     // Loads the corresponding page

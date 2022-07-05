@@ -19,9 +19,9 @@ export class LeaseEditComponent implements OnInit {
     // Variables
     lease : Lease;
     leases: Lease[];
-    lentGames: Game[];
-    lentClients: Client[];
+    clientLeases: Lease[];
     games: Game[];
+    gameLeases: Lease[];
     clients: Client[];
 
     errorDates: Boolean;
@@ -77,29 +77,53 @@ export class LeaseEditComponent implements OnInit {
             leases => this.leases = leases
         );
 
-        //this.leases.forEach(l => this.lentGames.push(l.game));
-        //this.leases.forEach(l => this.lentClients.push(l.client));
-
         this.error = false;
     }
 
     // Saves the lease
     onSave() {
-        // this.errorDates = (this.lease.startDate > this.lease.endDate);
-        // if (this.errorDates)
-        //     this.errorMessage = "La fecha de fin no puede ser menor que la de inicio. \n"
-        // else
-        //     this.tooManyDays = (Math.ceil((this.lease.endDate.valueOf() - this.lease.startDate.valueOf())/(1000*3600*24))) > 14;
+        this.errorDates = false;    // end date is bigger than start date
+        this.tooManyDays = false;   // lent for more than 14 days
+        this.tooManyLeases = false; // client has leases in the same day as new lease
+        this.alreadyLent = false;   // game is already lent to someone in those days
+        this.clientLeases = [];
+        this.gameLeases = [];
 
-        // if (this.tooManyDays)
-        //     this.errorMessage = "No se puede prestar por más de 14 días. \n";
+        this.errorDates = (this.lease.startDate > this.lease.endDate);
 
-        //this.tooManyLeases = this.lentClients.indexOf(this.lease.client) > -1;
-        //if (this.tooManyLeases)
-        //    this.errorMessage += "Este cliente ya tiene un juego prestado. \n";
+        if (this.errorDates)
+            this.errorMessage = "La fecha de fin no puede ser menor que la de inicio."
+        else
+            this.tooManyDays = (Math.ceil((new Date(this.lease.endDate).valueOf() - new Date(this.lease.startDate).valueOf())/(1000*3600*24))) > 14;
 
-        //this.alreadyLent = this.lentGames.indexOf(this.lease.game) > -1;
-        this.alreadyLent = false;
+        if (this.tooManyDays)
+            this.errorMessage = "No se puede prestar por más de 14 días.";
+
+        this.leases.forEach(l => {
+            if ((l.client.id == this.lease.client.id) && (l.id != this.lease.id))
+                this.clientLeases.push(l)
+            });
+
+        if (this.clientLeases.length > 0) { // client has leases
+            this.clientLeases.forEach(l => this.tooManyLeases = this.tooManyLeases
+                || ((this.lease.startDate >= l.startDate)
+                && (this.lease.endDate <= l.endDate)));
+
+            this.errorMessage = "Este cliente ya tiene un juego prestado.";
+        }
+
+        this.leases.forEach(l => {
+            if ((l.game.id == this.lease.game.id) && (l.id != this.lease.id)) 
+                this.gameLeases.push(l)
+        });
+        
+        if (this.gameLeases.length > 0) { // game has been lent
+            this.gameLeases.forEach(l => this.alreadyLent = this.alreadyLent
+                || ((this.lease.startDate >= l.startDate)
+                && (this.lease.endDate <= l.endDate)));
+
+            this.errorMessage = "Este juego ya está prestado.";
+        }
 
         this.error = this.errorDates || this.tooManyDays || this.tooManyLeases || this.alreadyLent;
 
