@@ -24,7 +24,7 @@ export class LeaseService {
     }
 
     getFilteredLeases(pageable: Pageable, gameId?: number, clientId?: number, date?: Date): Observable<LeasePage> {
-        return this.http.post<LeasePage>(this.composeFindUrl(gameId, clientId, date), {pageable:pageable});
+        return this.http.post<LeasePage>('http://localhost:8080/lease', {idGame:gameId, idClient:clientId, date:date, pageable:pageable});
     }
 
     getAll(): Observable<Lease[]> {
@@ -44,33 +44,5 @@ export class LeaseService {
     // Deletes a lease
     deleteLease(idLease: number): Observable<void> {
         return this.http.delete<void>("http://localhost:8080/lease/" + idLease);
-    }
-
-    // Filters
-    private composeFindUrl(gameId?: number, clientId?: number, date?: Date) : string {
-        let params = "";
-
-        if (date != null) {
-            params += "date=" + date;
-        }
-
-        if (gameId != null) {
-            if (params != "")
-                params += "&";
-            params += "idGame=" + gameId;
-        }
-        
-        if (clientId != null) {
-            if (params != "")
-                params += "&";
-            params += "idClient=" + clientId;
-        }
-
-        let url = "http://localhost:8080/lease";
-
-        if (params == "")
-            return url;
-        else
-            return (url + "?" + params);
     }
 }

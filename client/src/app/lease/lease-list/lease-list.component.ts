@@ -93,13 +93,6 @@ export class LeaseListComponent implements OnInit {
         let clientId = this.filterClient != null ? this.filterClient.id : null;
         let date = this.filterDate;
 
-        // this.leaseService.getLeases(pageable).subscribe( data => {
-        //     this.dataSource.data = data.content;
-        //     this.pageNumber = data.pageable.pageNumber;
-        //     this.pageSize = data.pageable.pageSize;
-        //     this.totalElements = data.totalElements;
-        // });
-
         this.leaseService.getFilteredLeases(pageable, gameId, clientId, date).subscribe( data => {
             this.dataSource.data = data.content;
             this.pageNumber = data.pageable.pageNumber;
